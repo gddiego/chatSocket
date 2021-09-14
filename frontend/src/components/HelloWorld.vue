@@ -1,58 +1,44 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
-  </div>
+  <div class="flex-1 p:2 sm:p-6 justify-between flex flex-col h-screen ">
+   <div class="flex sm:items-center justify-between py-3 border-b-2">
+      <avatar />
+      <!-- <div class="flex items-center space-x-2"> -->
+        <!-- <h2>teste</h2> -->
+      <!-- </div> -->
+   </div>
+   <div id="messages" class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
+      
+     <message />
+   </div>
+   <div class="border-t-2 border-gray-200 px-4 pt-4 mb-2 sm:mb-0">
+      <div class="relative flex">
+       <sendVoice />
+         <input type="text" placeholder="Escreva sua mensagem" class="w-full focus:outline-none focus:placeholder-purple-400 text-gray-600 placeholder-purple-600 pl-12 bg-purple-200 rounded-full py-3">
+         <div class="absolute right-0 items-center inset-y-0 hidden sm:flex">
+          <buttonsSend />
+         </div>
+      </div>
+   </div>
+</div>
 </template>
 
 <script>
+import message from '../components/message/message.vue'
+import Avatar from './message/avatar.vue'
+import buttonsSend from './buttons/buttonsSend.vue'
+import sendVoice from './buttons/sendVoice.vue'
+
 export default {
+  components: { message, Avatar, buttonsSend, sendVoice },
   name: 'HelloWorld',
   props: {
     msg: String
-  }
+  },
+
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+
 </style>
